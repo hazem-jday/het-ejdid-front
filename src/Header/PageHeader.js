@@ -1,20 +1,18 @@
 import * as React from 'react';
-import { Container, NavLink } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import logo from "./hetjdid.png"
 import Ticker from 'react-ticker'
 import { FaVolleyballBall, FaGlobeAmericas, FaCloudSunRain, FaMapMarkerAlt } from 'react-icons/fa'
-
-const PageHeader = () => {
-
-  const MoveStuffAround = () => (
+var PageHeader = (props) => {
+  const NewsTicker = () => (
     <Ticker height={25}>
       {() => (
         <div style={{
-          whiteSpace:"nowrap",
-          overflow:"hidden",
-          textOverflow:"ellipsis"
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis"
         }}>أعلن البنك المركزي الروسي الجمعة 8 أفريل 2022 أنه سيسمح مجددا اعتبارا من 18 أفريل ببيع العملات الأجنبية بعد تعليق هذا الامر مطلع مارس، إثر العقوبات الغربية غير المسبوقة بسبب اممممممممممممممممممممممممممممممممممممممممممممممممممممممممممممممممم
-        ممممممممممملنزاع في </div>
+          ممممممممممملنزاع في </div>
       )}
     </Ticker>
   )
@@ -26,39 +24,35 @@ const PageHeader = () => {
 
         <div className="d-flex justify-content-between align-items-center">
           <div className="col-lg-2 justify-content-between align-items-center text-center">
-            <a href="#">
-              <FaMapMarkerAlt className='text-primary' style={{ fontSize: "200%", color: "white" }}></FaMapMarkerAlt>
-              <NavLink className="">
-                الأخبار الوطنية
-              </NavLink>
+            <a href="/login">
+
+              <FaMapMarkerAlt className='text-primary' s="" style={{ fontSize: "200%", color: "white" }}></FaMapMarkerAlt>
+              <div>الأخبار الوطنية</div>
             </a>
           </div>
+
           <div className="col-lg-2 justify-content-between align-items-center text-center">
-            <a href="#">
+            <a href="/login">
               <FaGlobeAmericas className='text-primary' style={{ fontSize: "200%", color: "white" }}></FaGlobeAmericas>
-              <NavLink className="">
-                الأخبار الدولية
-              </NavLink>
+              <div>الأخبار الدولية</div>
             </a>
           </div>
           <div className='col-lg-2 justify-content-between align-items-center text-center'>
-            <img src={logo}></img>
-            <div className="text-primary pt-2">موقع تجريبي لبث الأخبار</div>
+            <a href="/">
+              <img alt="0" src={logo}></img>
+              <div className="text-primary pt-2">موقع تجريبي لبث الأخبار</div>
+            </a>
           </div>
           <div className="col-lg-2 justify-content-between align-items-center text-center">
-            <a href="#">
+            <a href="/login">
               <FaVolleyballBall className='text-primary' style={{ fontSize: "200%", color: "white" }}></FaVolleyballBall>
-              <NavLink className="">
-                أخبار الرياضة
-              </NavLink>
+              <div>أخبار الرياضة</div>
             </a>
           </div>
           <div className="col-lg-2 justify-content-between align-items-center text-center">
             <FaCloudSunRain className='text-primary' style={{ fontSize: "200%", color: "white" }}></FaCloudSunRain>
-            <a href="#">
-              <NavLink className="">
-                أحوال الطقس
-              </NavLink>
+            <a href="/login">
+              <div>أحوال الطقس</div>
             </a>
           </div>
 
@@ -66,8 +60,8 @@ const PageHeader = () => {
 
       </Container>
 
-      <div  className='row col-lg-12 bg-primary text-light mb-2'>
-        <MoveStuffAround/>
+      <div className='row col-lg-12 bg-primary text-light mb-2'>
+        <NewsTicker />
       </div>
     </>
   );

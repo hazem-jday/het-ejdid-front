@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FaFacebook, FaGlobeAmericas, FaCloudSunRain, FaMapMarkerAlt, FaTwitter, FaGoogle, FaYoutube } from 'react-icons/fa'
+import { FaFacebook, FaTwitter, FaYoutube } from 'react-icons/fa'
 const Footer = () => {
     return (
         <footer className="bg-primary text-center text-white mt-3">
@@ -29,9 +29,7 @@ const Footer = () => {
                 
                 <section className="mb-4">
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-                        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-                        eum harum corrupti dicta, aliquam sequi voluptate quas.
+                        تحصل على أهم و آخر الأخبار الوطنية و العالمية من مختلف المصادر
                     </p>
                 </section>
 
@@ -39,7 +37,7 @@ const Footer = () => {
             </div>
 
             <div className="row bg-light  text-center p-3">
-                <a className="" href="#">هات الجديد - 2022</a>
+                <a className="" href="/login">هات الجديد - 2022</a>
             </div>
         </footer>
 

@@ -30,8 +30,8 @@ const Main = () => {
         return articles.map((article, i) => <div className="col-lg-4">
             <div className="card">
                 <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img src={article.image} style={{aspectRatio:3/2}} className="img-fluid" />
-                    <a href="#">
+                    <img alt="55" src={article.image} style={{aspectRatio:3/2}} className="img-fluid" />
+                    <a href="/login">
                         <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
                     </a>
 
@@ -40,7 +40,12 @@ const Main = () => {
                     <h5 className="card-title">{article.title}</h5>
                     <p className="card-text">
                         شدّد المشاركون في الإجتماع الدوري لمتابعة تطورات الوضع الوبائي العالمي والمحلي لجائحة كوفيد-19، على مواصلة...                            </p>
-                    <a href="#" className="btn btn-secondary">اقرأ</a>
+                    <div className='row col-lg-12 justify-content-between'>
+                        <div>
+                            <a href="/login" className="btn btn-secondary">اقرأ</a>
+                        </div>
+                        <div>ssss</div>
+                    </div>
                 </div>
             </div>
         </div>)
@@ -95,8 +100,8 @@ const Main = () => {
                 <div className="col-lg-4">
                     <div className="card">
                         <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img style={{aspectRatio:3/2}} src="https://content.mosaiquefm.net/uploads/content/thumbnails/1649426313_media.jpg" className="img-fluid" />
-                            <a href="#">
+                            <img alt="66" style={{aspectRatio:3/2}} src="https://content.mosaiquefm.net/uploads/content/thumbnails/1649426313_media.jpg" className="img-fluid" />
+                            <a href="/login">
                                 <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
                             </a>
                         </div>
@@ -104,7 +109,7 @@ const Main = () => {
                             <h5 className="card-title">تونسيون يقتاتون من أنشطة تزدهر في رمضان.. لكن الإحتكار أضر ...</h5>
                             <p className="card-text">
                                 يقبل المستهلك التونسي خلال شهر رمضان على عدة منتجات بكثافة بحكم  العادات والتقاليد وميزة هذا...                            </p>
-                            <a href="#" className="btn btn-secondary">اقرأ</a>
+                            <a href="/login" className="btn btn-secondary">اقرأ</a>
                         </div>
                     </div>
                 </div>
@@ -115,8 +120,8 @@ const Main = () => {
                 <div className="col-lg-4">
                     <div className="card">
                         <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://content.mosaiquefm.net/uploads/content/thumbnails/1649348242_media.jpg" className="img-fluid" />
-                            <a href="#">
+                            <img alt="66" src="https://content.mosaiquefm.net/uploads/content/thumbnails/1649348242_media.jpg" className="img-fluid" />
+                            <a href="/login">
                                 <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
                             </a>
                         </div>
@@ -125,15 +130,15 @@ const Main = () => {
                             <p className="card-text">
                                 حققت شركة الخطوط التونسية، خلال شهر مارس 2022، رقما قياسيا على مستوى نسبة التعبئة، حيث تمكنت من تجاوز الأرقام المسجلة قبل...
                             </p>
-                            <a href="#" className="btn btn-primary">اقرأ</a>
+                            <a href="/login" className="btn btn-primary">اقرأ</a>
                         </div>
                     </div>
                 </div>
                 <div className="col-lg-4">
                     <div className="card">
                         <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://content.mosaiquefm.net/uploads/content/thumbnails/1649348242_media.jpg" className="img-fluid" />
-                            <a href="#">
+                            <img alt="" src="https://content.mosaiquefm.net/uploads/content/thumbnails/1649348242_media.jpg" className="img-fluid" />
+                            <a href="/login">
                                 <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
                             </a>
                         </div>
@@ -142,15 +147,15 @@ const Main = () => {
                             <p className="card-text">
                                 حققت شركة الخطوط التونسية، خلال شهر مارس 2022، رقما قياسيا على مستوى نسبة التعبئة، حيث تمكنت من تجاوز الأرقام المسجلة قبل...
                             </p>
-                            <a href="#" className="btn btn-primary">اقرأ</a>
+                            <a href="/login" className="btn btn-primary">اقرأ</a>
                         </div>
                     </div>
                 </div>
                 <div className="col-lg-4">
                     <div className="card">
                         <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="https://content.mosaiquefm.net/uploads/content/thumbnails/1649348242_media.jpg" className="img-fluid" />
-                            <a href="#">
+                            <img alt="zz" src="https://content.mosaiquefm.net/uploads/content/thumbnails/1649348242_media.jpg" className="img-fluid" />
+                            <a href="/login">
                                 <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
                             </a>
                         </div>
@@ -159,7 +164,7 @@ const Main = () => {
                             <p className="card-text">
                                 حققت شركة الخطوط التونسية، خلال شهر مارس 2022، رقما قياسيا على مستوى نسبة التعبئة، حيث تمكنت من تجاوز الأرقام المسجلة قبل...
                             </p>
-                            <a href="#" className="btn btn-primary">اقرأ</a>
+                            <a href="/login" className="btn btn-primary">اقرأ</a>
                         </div>
                     </div>
                 </div>
