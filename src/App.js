@@ -3,18 +3,18 @@ import NavBar from './NavBar/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import PageHeader from './Header/PageHeader';
-import Main from './Main';
+import Home from './Home';
 import Footer from"./Footer/Footer"
 import axios from "axios"
 import Login from "./Login/Login"
 import Signup from "./Signup/Signup"
 import Logout from "./Logout/Logout"
-
+import Article from './Article.js/Article';
 
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
+  Route
 } from "react-router-dom";
 
 
@@ -32,10 +32,11 @@ export default function App() {
         <NavBar setUserID={setUserID} userID={userID}/>
         <PageHeader/>
         <Routes>
-          <Route exact path="/" element={<Main setUserID={setUserID} userID={userID} />} />
+          <Route exact path="/" element={<Home setUserID={setUserID} userID={userID} />} />
           <Route path="/Login" element={<Login setUserID={setUserID} userID={userID} />} />
           <Route path="/Signup" element={<Signup setUserID={setUserID} userID={userID}/>} />
           <Route path="/Logout" element={<Logout setUserID={setUserID} userID={userID}/>} />
+          <Route path="/Article/:id" element={<Article setUserID={setUserID} userID={userID}/>} />
         </Routes>
         <Footer setUserID={setUserID} userID={userID}/>
       </div>

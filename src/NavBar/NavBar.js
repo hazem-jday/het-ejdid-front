@@ -2,9 +2,8 @@
 import * as React from 'react';
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button, Offcanvas } from 'react-bootstrap';
 import { FaSearch, FaUserCircle, FaTwitterSquare, FaFacebookSquare, FaYoutubeSquare } from 'react-icons/fa'
-
-const NavBar = (props) => {
-
+const NavBar = () => {
+  
   return (
     <Navbar variant="dark" className="bg-light border-bottom border-primary border-3" style={{ borderBottom: "2px solid lightgray" }} expand={false} dir="rtl">
       <Container fluid>
@@ -63,7 +62,7 @@ const NavBar = (props) => {
             className="ms-2"
             aria-label="Search"
           />
-          <Button className="btn btn-primary text-light">
+          <Button className="btn btn-primary text-light" >
             <FaSearch></FaSearch>
           </Button>
         </Form>
