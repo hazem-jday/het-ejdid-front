@@ -5,10 +5,8 @@ const Footer = () => {
         <footer className="bg-primary text-center text-white mt-3">
             <div className="container p-4 pb-0">
                 <div className="d-flex justify-content-center align-items-center">
-                    <span className="me-3">سجل من هنا ليصلك كل جديد</span>
-                    <button type="button" className="btn btn-outline-light btn-rounded">
-                        إنشاء حساب
-                    </button>
+                    <span className="me-3">يمكنك متابعتنا على وسائل التواصل الاجتماعي</span>
+                   
                 </div>
             </div>
 

@@ -16,9 +16,10 @@ const Login = (props) => {
         }
 
         axios.post("/login", user).then((response) => {
-            if (response.status === 200)
-                localStorage.setItem("ID",response.id)
+            if (response.status === 200){
+                localStorage.setItem("ID",""+response.data.id)
                 props.setUserID(localStorage.getItem("ID"))
+            }
                 
         }).catch((error) => {
             if (error.response) {

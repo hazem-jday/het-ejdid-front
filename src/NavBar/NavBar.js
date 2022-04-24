@@ -1,11 +1,19 @@
 
-import * as React from 'react';
-import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button, Offcanvas } from 'react-bootstrap';
-import { FaSearch, FaUserCircle, FaTwitterSquare, FaFacebookSquare, FaYoutubeSquare } from 'react-icons/fa'
-const NavBar = () => {
-  
+import { useState } from 'react';
+import { ToggleButton, Navbar, Container, Nav, NavDropdown, Form, FormControl, Button, Offcanvas, ButtonGroup } from 'react-bootstrap';
+import { FaMoon, FaRegSun, FaSearch, FaUserCircle, FaTwitterSquare, FaFacebookSquare, FaYoutubeSquare } from 'react-icons/fa'
+
+const NavBar = (props) => {
+  const [searchStr, setSearchStr] = useState("")
+  let { setDark } = props
+  const handleSearchStrChange = (e) => {
+    const val = e.target.value
+    setSearchStr(val)
+  }
+
+
   return (
-    <Navbar variant="dark" className="bg-light border-bottom border-primary border-3" style={{ borderBottom: "2px solid lightgray" }} expand={false} dir="rtl">
+    <Navbar variant="dark" className="bg-light border-bottom border-primary border-3 sticky-top" style={{ borderBottom: "2px solid lightgray" }} expand={false} dir="rtl">
       <Container fluid>
 
         <Navbar.Toggle variant="dark" className="btn btn-primary bg-primary text-light" aria-controls="offcanvasNavbar" />
@@ -21,6 +29,32 @@ const NavBar = () => {
 
           </Offcanvas.Header>
           <Offcanvas.Body>
+              <ToggleButton
+                style={{display:`${localStorage.getItem("DARK") === "true" ? "none" : ""}`}}
+                id={`radio-dark`}
+                type="radio"
+                variant={'outline-dark'}
+                name="radio"
+                value={true}
+                checked={localStorage.getItem("DARK") === "true"}
+                onChange={(e) => { setDark(e.currentTarget.value); localStorage.setItem("DARK", "true") }}
+              >
+                الوضع المظلم
+                <FaMoon />
+              </ToggleButton>
+              <ToggleButton
+                style={{display:`${localStorage.getItem("DARK") !== "true" ? "none" : ""}`}}
+                id={`radio-light`}
+                type="radio"
+                variant={'outline-dark'}
+                name="radio"
+                value={false}
+                checked={localStorage.getItem("DARK") !== "true"}
+                onChange={(e) => { setDark(e.currentTarget.value); localStorage.setItem("DARK", "false") }}
+              >
+                إضاءة
+                <FaRegSun />
+              </ToggleButton>
             <Nav className="justify-content-end flex-grow-1 pe-3" >
               <Nav.Link href="#action1">الرئيسية</Nav.Link>
 
@@ -43,6 +77,7 @@ const NavBar = () => {
                 aria-label="Search"
               />
               <Button className='btn btn-primary' style={{ background: "#0d6efd" }}>بحث</Button>
+
             </Form>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
@@ -61,8 +96,12 @@ const NavBar = () => {
             placeholder="بحث"
             className="ms-2"
             aria-label="Search"
+            onChange={handleSearchStrChange}
           />
-          <Button className="btn btn-primary text-light" >
+          <Button className="btn btn-primary text-light" onClick={(e) => {
+            e.preventDefault();
+            window.location.href = '/search/' + searchStr;
+          }}>
             <FaSearch></FaSearch>
           </Button>
         </Form>
@@ -70,7 +109,7 @@ const NavBar = () => {
 
         <NavDropdown title={<FaUserCircle className='ml-1 text-primary' style={{ fontSize: "200%", color: "white" }} />} className="" id="basic-nav-dropdown" dir="rtl">
           {localStorage.getItem("ID") !== null ?
-            
+
             <>
               <NavDropdown.Item className="text-end" href="#action/3.1">التسجيلات</NavDropdown.Item>
               <NavDropdown.Item className="text-end" href="#action/3.2">الإشعارات</NavDropdown.Item>

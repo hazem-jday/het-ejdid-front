@@ -3,3 +3,10 @@
     margin: 0px;
     padding: 0px;
 }
+.inv{
+    filter: invert(1) hue-rotate(-180deg);
+}
+
+body{
+    font-family: 'Readex Pro', sans-serif;
+}

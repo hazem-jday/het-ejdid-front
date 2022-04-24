@@ -1,18 +1,31 @@
-import * as React from 'react';
+import {useEffect,useState} from 'react';
 import { Container } from 'react-bootstrap';
 import logo from "./hetjdid.png"
 import Ticker from 'react-ticker'
+import axios from 'axios';
 import { FaVolleyballBall, FaGlobeAmericas, FaCloudSunRain, FaMapMarkerAlt } from 'react-icons/fa'
-var PageHeader = (props) => {
+var PageHeader = () => {
+  useEffect(() => {
+    axios.get(`/newsTicker`)
+        .then(res => {
+            const articles = res.data;
+            setArticles(articles)
+        })
+  },[]);
+  const [articles, setArticles] = useState([]);
+
+    
+
   const NewsTicker = () => (
-    <Ticker height={25}>
+    <Ticker height={25} direction="toRight">
       {() => (
         <div style={{
           whiteSpace: "nowrap",
           overflow: "hidden",
           textOverflow: "ellipsis"
-        }}>أعلن البنك المركزي الروسي الجمعة 8 أفريل 2022 أنه سيسمح مجددا اعتبارا من 18 أفريل ببيع العملات الأجنبية بعد تعليق هذا الامر مطلع مارس، إثر العقوبات الغربية غير المسبوقة بسبب اممممممممممممممممممممممممممممممممممممممممممممممممممممممممممممممممم
-          ممممممممممملنزاع في </div>
+
+        }}>{articles.map((article,i) => <span key={i}>{" - "+article.title+" "}</span>)}
+        </div>
       )}
     </Ticker>
   )
@@ -50,8 +63,8 @@ var PageHeader = (props) => {
             </a>
           </div>
           <div className="col-lg-2 justify-content-between align-items-center text-center">
-            <FaCloudSunRain className='text-primary' style={{ fontSize: "200%", color: "white" }}></FaCloudSunRain>
             <a href="/login">
+            <FaCloudSunRain className='text-primary' style={{ fontSize: "200%", color: "white" }}></FaCloudSunRain>
               <div>أحوال الطقس</div>
             </a>
           </div>
