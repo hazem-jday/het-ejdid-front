@@ -2,10 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Badge } from 'react-bootstrap';
 import axios from 'axios';
-import NewsHighlights from './NewsHighlights'
-
-
-
+import NewsHighlights from '../Highlights/NewsHighlights'
 
 const Home = () => {
 
@@ -33,7 +30,7 @@ const Home = () => {
 
     function NatPreview() {
         
-        return NatArticles.map((article, i) => <div className="col-lg-4 d-flex mb-2">
+        return NatArticles.map((article, i) => <div className="col-lg-4 d-flex mb-2" key={i}>
             <div className="card">
                 <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                     <img alt="55" src={article.image} style={{aspectRatio:3/2}} className={`img-fluid ${localStorage.getItem("DARK")==="true" ? "inv" : ""}`} />
@@ -44,7 +41,7 @@ const Home = () => {
                 </div>
                 <div className="card-body row">
                     <h6 className="card-title text-center text-primary" style={{lineHeight:"24px",maxHeight:"48px",overflow:"hidden",minHeight:"48px"}}>{article.title}</h6>
-                    <p className="card-text" style={{lineHeight:"20px",maxHeight:"42px",overflow:"hidden",minHeight:"42px",fontSize:"90%"}}>{article.content.slice(0,70) + "..."}</p>
+                    <p className="card-text" style={{lineHeight:"20px",maxHeight:"42px",overflow:"hidden",minHeight:"42px",fontSize:"90%"}}>{article.content.slice(0,150) + "..."}</p>
                             
                     <p className="text-center" style={{fontSize:"120%"}}><Badge className="badge badge-secondary">{article.date.slice(0,10).replaceAll("-", "/") +" | "+ article.date.slice(11,16)}</Badge></p>
                     <a href={"/article/"+article.id} className="btn btn-outline-primary">اقرأ</a>
@@ -54,7 +51,7 @@ const Home = () => {
     }
     function InterPreview(props) {
         
-        return InterArticles.map((article, i) => <div className="col-lg-4 d-flex mb-3">
+        return InterArticles.map((article, i) => <div className="col-lg-4 d-flex mb-3" key={i}>
             <div className="card">
                 <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                     <img alt="55" src={article.image} style={{aspectRatio:3/2}} className={`img-fluid ${localStorage.getItem("DARK")==="true" ? "inv" : ""}`} />
@@ -65,7 +62,7 @@ const Home = () => {
                 </div>
                 <div className="card-body row">
                     <h6 className="card-title text-center text-primary" style={{lineHeight:"24px",maxHeight:"48px",overflow:"hidden",minHeight:"48px"}}>{article.title}</h6>
-                    <p className="card-text" style={{lineHeight:"20px",maxHeight:"42px",overflow:"hidden",minHeight:"42px",fontSize:"90%"}}>{article.content.slice(0,70) + "..."}</p>
+                    <p className="card-text" style={{lineHeight:"20px",maxHeight:"42px",overflow:"hidden",minHeight:"42px",fontSize:"90%"}}>{article.content.slice(0,150) + "..."}</p>
                             
                     <p className="text-center" style={{fontSize:"120%"}}><Badge className="badge badge-secondary">{article.date.slice(0,10).replaceAll("-", "/") +" | "+ article.date.slice(11,16)}</Badge></p>
                     <a href={"/article/"+article.id} className="btn btn-outline-primary">اقرأ</a>
@@ -75,7 +72,7 @@ const Home = () => {
     }
     function SportPreview() {
         
-        return SportArticles.map((article, i) => <div className="col-lg-4 d-flex mb-3">
+        return SportArticles.map((article, i) => <div className="col-lg-4 d-flex mb-3" key={i}>
             <div className="card">
                 <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                     <img alt="55" src={article.image} style={{aspectRatio:3/2}} className={`img-fluid ${localStorage.getItem("DARK")==="true" ? "inv" : ""}`} />
@@ -86,7 +83,7 @@ const Home = () => {
                 </div>
                 <div className="card-body row">
                     <h6 className="card-title text-center text-primary" style={{lineHeight:"24px",maxHeight:"48px",overflow:"hidden",minHeight:"48px"}}>{article.title}</h6>
-                    <p className="card-text" style={{lineHeight:"20px",maxHeight:"42px",overflow:"hidden",minHeight:"42px",fontSize:"90%"}}>{article.content.slice(0,70) + "..."}</p>
+                    <p className="card-text" style={{lineHeight:"20px",maxHeight:"42px",overflow:"hidden",minHeight:"42px",fontSize:"90%"}}>{article.content.slice(0,150) + "..."}</p>
                             
                     <p className="text-center" style={{fontSize:"120%"}}><Badge className="badge badge-secondary">{article.date.slice(0,10).replaceAll("-", "/") +" | "+ article.date.slice(11,16)}</Badge></p>
                     <a href={"/article/"+article.id} className="btn btn-outline-primary">اقرأ</a>

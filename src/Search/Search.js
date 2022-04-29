@@ -24,24 +24,21 @@ const Search = () => {
 
     function Articles() {
         return articles.map((article, i) =>
-        <div key={i} className="col-lg-4">
+        <div className="col-lg-4 d-flex mb-2" key={i}>
             <div className="card">
                 <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img alt="55" src={article.image} style={{ aspectRatio: 3 / 2 }} className="img-fluid" />
-                    <a href={article.source}>
-                        <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}>{article.publisher}</div>
+                    <img alt="55" src={article.image} style={{aspectRatio:3/2}} className={`img-fluid ${localStorage.getItem("DARK")==="true" ? "inv" : ""}`} />
+                    <a href="/login">
+                        <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
                     </a>
 
                 </div>
-                <div className="card-body">
-                    <h5 className="card-title">{article.title}</h5>
-                    <p className="card-text">{article.content.slice(0, 100) + "..."}</p>
-                    <div className='row col-lg-12 justify-content-between'>
-                        <div>
-                            <a href={"/article/" + article.id} className="btn btn-secondary">اقرأ</a>
-                        </div>
-                        <div>{article.date}</div>
-                    </div>
+                <div className="card-body row">
+                    <h6 className="card-title text-center text-primary" style={{lineHeight:"24px",maxHeight:"48px",overflow:"hidden",minHeight:"48px"}}>{article.title}</h6>
+                    <p className="card-text" style={{lineHeight:"20px",maxHeight:"42px",overflow:"hidden",minHeight:"42px",fontSize:"90%"}}>{article.content.slice(0,150) + "..."}</p>
+                            
+                    <p className="text-center" style={{fontSize:"120%"}}><Badge className="badge badge-secondary">{article.date.slice(0,10).replaceAll("-", "/") +" | "+ article.date.slice(11,16)}</Badge></p>
+                    <a href={"/article/"+article.id} className="btn btn-outline-primary">اقرأ</a>
                 </div>
             </div>
         </div>

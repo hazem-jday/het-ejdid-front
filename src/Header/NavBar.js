@@ -1,14 +1,28 @@
 
 import { useState } from 'react';
-import { ToggleButton, Navbar, Container, Nav, NavDropdown, Form, FormControl, Button, Offcanvas, ButtonGroup } from 'react-bootstrap';
+import { ToggleButton, Navbar, Container, Nav, NavDropdown, Form, FormControl, Button, Offcanvas } from 'react-bootstrap';
 import { FaMoon, FaRegSun, FaSearch, FaUserCircle, FaTwitterSquare, FaFacebookSquare, FaYoutubeSquare } from 'react-icons/fa'
+import './NavBar.css'
 
 const NavBar = (props) => {
   const [searchStr, setSearchStr] = useState("")
+  const [sideMenuSearchStr, setSideMenuSearchStr] = useState("")
   let { setDark } = props
   const handleSearchStrChange = (e) => {
     const val = e.target.value
     setSearchStr(val)
+  }
+  const handleSideMenuSearchStrChange = (e) => {
+    const val = e.target.value
+    setSideMenuSearchStr(val)
+  }
+  
+  const DropDownC = () => {
+    return (
+      <Button>
+        <FaUserCircle></FaUserCircle>
+      </Button>
+    )
   }
 
 
@@ -69,14 +83,23 @@ const NavBar = (props) => {
               <Nav.Link href="#action2">أحوال الطقس</Nav.Link>
             </Nav>
 
-            <Form className="d-flex" dir="rtl">
+            <Form className="d-flex" dir="rtl"
+            onSubmit={e => { e.preventDefault();window.location.href = '/search/' + sideMenuSearchStr; }}
+            >
               <FormControl
                 type="search"
                 placeholder="بحث"
                 className="ms-2"
                 aria-label="Search"
+                
+                onChange={handleSideMenuSearchStrChange}
               />
-              <Button className='btn btn-primary' style={{ background: "#0d6efd" }}>بحث</Button>
+              <Button className='btn btn-primary' style={{ background: "#0d6efd" }} onClick={(e) => {
+                e.preventDefault();
+                window.location.href = '/search/' + sideMenuSearchStr;
+              }}>
+                <FaSearch/>
+              </Button>
 
             </Form>
           </Offcanvas.Body>
@@ -90,7 +113,10 @@ const NavBar = (props) => {
 
         </div>
 
-        <Form className="d-none d-md-flex">
+        <Form className="d-none d-md-flex"
+          onSubmit={e => { e.preventDefault();window.location.href = '/search/' + searchStr; }}
+
+        >
           <FormControl
             type="search"
             placeholder="بحث"
@@ -102,7 +128,7 @@ const NavBar = (props) => {
             e.preventDefault();
             window.location.href = '/search/' + searchStr;
           }}>
-            <FaSearch></FaSearch>
+            <FaSearch/>
           </Button>
         </Form>
 

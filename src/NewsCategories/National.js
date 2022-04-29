@@ -9,21 +9,39 @@ import { Badge } from 'react-bootstrap';
 
 
 
-const International = () => {
+const National = () => {
     const [articles, setArticles] = useState([]);
-    let { n } = useParams();
+    const [pagination, setPagination] = useState([])
+    const [n,setN] = useState(0)
+    
+    let page = useParams().n
+    if(typeof(useParams().n) === 'undefined')
+        page = 1
+    else if (page < 0)
+        page = 1
     useEffect(() => {
-        axios.get(`/inter/` + n)
+        setN(parseInt(page,0))
+        axios.get(`/nat/` + n)
             .then(res => {
                 const articles = res.data;
                 setArticles(articles)
             })
+        
+        const prev = n > 1 ? n-1 : -1
+        const next = n+1
 
-    }, [n]);
+        const p1 = n > 1 ? n-1 : 1
+        const p2 = n > 1 ? n : n+1
+        const p3 = n > 1 ? n+1 : n+2
+
+        setPagination([prev,p1,p2,p3,next])
+
+
+    }, [page,n]);
 
 
     function Articles() {
-        return articles.map((article, i) => <div className="col-lg-4 d-flex mb-3">
+        return articles.map((article, i) => <div className="col-lg-4 d-flex mb-3" key={i}>
             <div className="card">
                 <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                     <img alt="55" src={article.image} style={{ aspectRatio: 3 / 2 }} className={`img-fluid ${localStorage.getItem("DARK") === "true" ? "inv" : ""}`} />
@@ -55,30 +73,30 @@ const International = () => {
 
 
     return (
-        <div className="container row" dir="rtl" style={{}}>
+        <div className="container row justify-content-center" dir="rtl" style={{}}>
             <div className='row col-lg-12' dir="rtl">
 
                 <div className="col-lg-12">
-                    <h4 className="text-light text-center"><Badge bg="primary">الأخبار الدولية</Badge></h4>
+                    <h4 className="text-light text-center"><Badge bg="primary">الأخبار الوطنة</Badge></h4>
                 </div>
-                <hr className='divider py-1 bg-primary'/>
+                <hr className='divider py-1 bg-primary' />
 
-                {articles ?
+                {articles && articles.length > 0 ?
                     <Articles /> :
-                    <h5 className="text-danger">{"لا توجد مقالات تخص هذا الطلب"}</h5>
+                    ""
                 }
 
             </div>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="/Inter/" tabindex="-1">الصفحة السابقة</a>
+                <nav className="row " dir="ltr" aria-label="Page navigation example">
+                    <ul className="pagination justify-content-center">
+                        <li className={`page-item ${n===1 ? "disabled":""}`}>
+                            <a className="page-link" href={"/Nat/"+pagination[0]} tabindex="-1">{"<"}</a>
                         </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">الصفحة التالية</a>
+                        <li className={`page-item ${n===pagination[1] ? "active":""}`}><a class="page-link" href={"/Nat/"+pagination[1]}>{pagination[1]}</a></li>
+                        <li className={`page-item ${n===pagination[2] ? "active":""}`}><a class="page-link" href={"/Nat/"+pagination[2]}>{pagination[2]}</a></li>
+                        <li className="page-item"><a class="page-link" href={"/Nat/"+pagination[3]}>{pagination[3]}</a></li>
+                        <li className="page-item">
+                            <a className="page-link" href={"/Nat/"+pagination[4]}>{">"}</a>
                         </li>
                     </ul>
                 </nav>
@@ -87,4 +105,4 @@ const International = () => {
         </div>
     )
 }
-export default International
+export default National

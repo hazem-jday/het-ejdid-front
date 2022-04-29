@@ -27,7 +27,7 @@ const NewsHighlights = () => {
                         {
                         newsHighlights.nat ?
                         newsHighlights.nat.map((article,i) =>
-                        <a href={article.source} style={{textDecoration:"none"}}>
+                        <a href={"/Article/"+article.id} style={{textDecoration:"none"}} key={i}>
                             <ListGroupItem>
                                 
                                     {article.title}
@@ -46,13 +46,13 @@ const NewsHighlights = () => {
                         {
                         newsHighlights.nat ?
                         newsHighlights.nat.map((article,i) =>
-                        <a href={article.source} style={{textDecoration:"none"}}>
+                        <a href={"/Article/"+article.id} style={{textDecoration:"none"}} key={i}>
                             <ListGroupItem>
                                 
                                     {article.title}
                                
                             </ListGroupItem>
-                            </a>
+                        </a>
                         )
                         :
                         ""
@@ -65,7 +65,7 @@ const NewsHighlights = () => {
                         {
                         newsHighlights.nat ?
                         newsHighlights.nat.map((article,i) =>
-                        <a href={article.source} style={{textDecoration:"none"}}>
+                        <a href={"/Article/"+article.id} style={{textDecoration:"none"}} key={i}>
                             <ListGroupItem>
                                 
                                     {article.title}

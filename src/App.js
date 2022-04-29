@@ -1,17 +1,21 @@
 import {useState,useEffect} from 'react';
-import NavBar from './NavBar/NavBar';
+import NavBar from './Header/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import PageHeader from './Header/PageHeader';
-import Home from './Home';
+import Home from './Home/Home';
 import Footer from"./Footer/Footer"
 import axios from "axios"
-import Login from "./Login/Login"
-import Signup from "./Signup/Signup"
-import Logout from "./Logout/Logout"
-import Article from './Article.js/Article';
-import Search from './Search';
-import International from './International'
+import Login from "./Account/Login"
+import Signup from "./Account/Signup"
+import Logout from "./Account/Logout"
+import Article from './Article/Article'
+import Search from './Search/Search';
+import International from './NewsCategories/International'
+import National from './NewsCategories/National'
+
+import Sport from './NewsCategories/Sport'
+
 
 import {
   BrowserRouter as Router,
@@ -20,9 +24,7 @@ import {
 } from "react-router-dom";
 
 
-
-
-axios.defaults.baseURL = "http://192.168.1.158:8081"
+axios.defaults.baseURL = "http://127.0.0.1:8081"
 
 export default function App() {
 
@@ -56,6 +58,11 @@ export default function App() {
           <Route path="/Article/:id" element={<Article setUserID={setUserID} userID={userID}/>} />
           <Route path="/Search/:s" element={<Search setUserID={setUserID} userID={userID}/>} />
           <Route path="/Inter/:n" element={<International setUserID={setUserID} userID={userID}/>} />
+          <Route path="/Inter" element={<International setUserID={setUserID} userID={userID}/>} />
+          <Route path="/Nat/:n" element={<National setUserID={setUserID} userID={userID}/>} />
+          <Route path="/Nat" element={<National setUserID={setUserID} userID={userID}/>} />
+          <Route path="/Sport/:n" element={<Sport setUserID={setUserID} userID={userID}/>} />
+          <Route path="/Sport" element={<Sport setUserID={setUserID} userID={userID}/>} />
         </Routes>
         <Footer setUserID={setUserID} userID={userID}/>
       </div>

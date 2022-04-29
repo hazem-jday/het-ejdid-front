@@ -17,6 +17,7 @@
     "headroom": "^0.2.0",
     "material-ui-icons": "^1.0.0-beta.36",
     "react": "^18.0.0",
+    "react-back-to-top-button": "^0.0.14",
     "react-bootstrap": "^2.2.3",
     "react-custom-share": "^0.4.8",
     "react-dark-mode-toggle": "^0.2.0",
