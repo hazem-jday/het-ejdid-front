@@ -1,7 +1,7 @@
-import { Button, Badge } from 'react-bootstrap';
+import { Button, Badge, ButtonGroup } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { FaShare, FaHeart, FaSave } from 'react-icons/fa'
+import { FaShare, FaHeart, FaSave,FaPlay,FaStop, FaPause } from 'react-icons/fa'
 import axios from 'axios';
 import NewsHighlights from '../Highlights/NewsHighlights';
 
@@ -13,6 +13,10 @@ const Article = () => {
 
     const [save, setSave] = useState(false);
 
+    const [nbLikes, setNBLikes] = useState({});
+
+    const [pause,setPause] = useState(false);
+    const [stop,setStop] = useState(true);
     let { id } = useParams();
     useEffect(() => {
         axios.get(`/article/` + id)
@@ -36,14 +40,18 @@ const Article = () => {
                     console.log(save.id !== 0)
                     setSave(save)
                 })
+        axios.get(`/nbLikes/` + article.id)
+                .then((res) => {
+                    setNBLikes(res.data)
+                });
 
-    }, [id]);
+    }, [id,like.id,article.id]);
 
 
     function likeArticle() {
         if (localStorage.getItem("ID")) {
             console.log(localStorage.getItem("ID"))
-            const like = { "user": parseInt(localStorage.getItem("ID")), "article": article.id }
+            const like = { "user": parseInt(localStorage.getItem("ID")), "article": article.id, "title": article.title }
             console.log(like)
             axios.post(`/like`, like)
                 .then(res => {
@@ -65,10 +73,11 @@ const Article = () => {
 
     }
 
+
     function saveArticle() {
         if (localStorage.getItem("ID")) {
             console.log(localStorage.getItem("ID"))
-            const save = { "user": parseInt(localStorage.getItem("ID")), "article": article.id }
+            const save = { "user": parseInt(localStorage.getItem("ID")), "article": article.id, "title": article.title }
             console.log(save)
             axios.post(`/save`, save)
                 .then(res => {
@@ -106,9 +115,46 @@ const Article = () => {
                         </div>
 
                         <div className="card-body align-items-start">
-                            <Button onClick={() =>
-                                window.responsiveVoice.speak(document.getElementById("article-text").innerHTML, "Arabic Male")
-                            }>اقرأ</Button>
+                            <div className="text-center">
+                            <ButtonGroup dir="ltr" className='text-center'>
+                                {
+                                    stop ?
+                                    <Button onClick={() => {
+                                        window.responsiveVoice.CHARACTER_LIMIT=350
+                                        window.responsiveVoice.speak(document.getElementById("article-text").innerHTML, "Arabic Female",{onend : ()=>{setStop(true)}});
+                                        setStop(false)
+                                        setPause(false)
+                                    }}>
+                                        <FaPlay></FaPlay>
+                                    </Button>
+                                    : pause ?
+                                    <Button onClick={() => {
+                                        window.responsiveVoice.resume();
+                                        setPause(false)
+                                    }}>
+                                        <FaPlay></FaPlay>
+                                    </Button>
+                                    :
+                                    <Button onClick={() => {
+                                        window.responsiveVoice.pause();
+                                        setPause(true)
+                                        console.log(window.responsiveVoice)
+                                    }}>
+                                        <FaPause></FaPause>
+                                    </Button>
+                                }
+                                
+
+                                <Button className='btn-danger' onClick={() => {
+                                    window.responsiveVoice.cancel();
+                                    setPause(false)
+                                    setStop(true)
+                                    }}>
+                                    <FaStop></FaStop>
+                                </Button>
+                            </ButtonGroup>
+                            </div>
+
 
 
 
@@ -116,7 +162,7 @@ const Article = () => {
                             <p className="card-text" style={{ whiteSpace: "pre-line" }} id="article-text">{article.content}</p>
                             <h5 className='text-center'>{
                                 article.date ?
-                                    <Badge className='col-lg-6'>
+                                    <Badge className=''>
                                         {article.date.slice(0, 10).replaceAll("-", "/") + " | " + article.date.slice(11, 16)}
                                     </Badge> : ""
                             }</h5>
@@ -127,40 +173,47 @@ const Article = () => {
 
                             </div>
                         </div>
-                        <div className="card-footer d-flex col-12 text-center">
-                            <div className="col-4">
+                        <div className="card-footer d-flex col-12 text-center justify-content-center">
+                            <div className="col-sm-4">
                                 {
                                     save.id ?
                                     <button className="btn btn-success" onClick={unsaveArticle}>
                                         حذف
-                                        <FaSave></FaSave>
+                                        <FaSave className='me-1'></FaSave>
                                     </button>
                                     :
                                     <button className="btn btn-outline-success" onClick={saveArticle}>
                                         حفظ
-                                        <FaSave></FaSave>
+                                        <FaSave className='me-1'></FaSave>
                                     </button>
                                 }
                             </div>
-                            <div className="col-4">
+                            <div className="col-sm-4 me-2 ms-2">
+                                <ButtonGroup dir="ltr">
                                 {
                                     like.id ?
-                                        <button className="btn btn-danger" onClick={unlikeArticle}>
+                                        <button dir="rtl" className="btn btn-danger" onClick={unlikeArticle}>
                                             إلغاء
-                                            <FaHeart></FaHeart>
+                                            <FaHeart className='me-1'></FaHeart>
                                         </button>
                                         :
-                                        <button className="btn btn-outline-danger" onClick={likeArticle}>
-                                            إعجاب
-                                            <FaHeart></FaHeart>
+                                        <button dir="rtl" className="btn btn-outline-danger" onClick={likeArticle}>
+                                            إعجاب                                            
+                                            <FaHeart className='me-1'></FaHeart>
                                         </button>
+
+                                        
                                 }
+                                <button className="btn btn-outline-danger" disabled>
+                                            {nbLikes.nb}                                            
+                                        </button>
+                                </ButtonGroup>
                             </div>
-                            <div className="col-4">
-                                <a href={`https://facebook.com/sharer/sharer.php?u=${article.source}`}>
+                            <div className="col-sm-4">
+                                <a href={`https://facebook.com/sharer/sharer.php?u=${article.source}`} target="_blank" rel="noopener noreferrer">
                                     <button className="btn btn-outline-primary">
                                         مشاركة
-                                        <FaShare></FaShare>
+                                        <FaShare className='me-1'></FaShare>
                                     </button>
                                 </a>
                             </div>

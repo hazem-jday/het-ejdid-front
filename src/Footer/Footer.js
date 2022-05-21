@@ -31,12 +31,10 @@ const Footer = () => {
                     </p>
                 </section>
 
+                <a className="text-light" href="/login">هات الجديد - 2022</a>
 
             </div>
 
-            <div className="row bg-light  text-center p-3">
-                <a className="" href="/login">هات الجديد - 2022</a>
-            </div>
         </footer>
 
     )

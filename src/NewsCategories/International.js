@@ -21,6 +21,7 @@ const International = () => {
         page = 1
     useEffect(() => {
         setN(parseInt(page,0))
+        if(n!==0 && typeof(n) !== "undefined" && n!=null)
         axios.get(`/inter/` + n)
             .then(res => {
                 const articles = res.data;
@@ -43,7 +44,7 @@ const International = () => {
     function Articles() {
         return articles.map((article, i) => <div className="col-lg-4 d-flex mb-3" key={i}>
             <div className="card">
-                <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <div className="bg-image hover-overlay ripple text-center" data-mdb-ripple-color="light">
                     <img alt="55" src={article.image} style={{ aspectRatio: 3 / 2 }} className={`img-fluid ${localStorage.getItem("DARK") === "true" ? "inv" : ""}`} />
                     <a href="/login">
                         <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}></div>
@@ -90,11 +91,11 @@ const International = () => {
                 <nav className="row " dir="ltr" aria-label="Page navigation example">
                     <ul className="pagination justify-content-center">
                         <li className={`page-item ${n===1 ? "disabled":""}`}>
-                            <a className="page-link" href={"/Inter/"+pagination[0]} tabindex="-1">{"<"}</a>
+                            <a className="page-link" href={"/Inter/"+pagination[0]} tabIndex="-1">{"<"}</a>
                         </li>
-                        <li className={`page-item ${n===pagination[1] ? "active":""}`}><a class="page-link" href={"/Inter/"+pagination[1]}>{pagination[1]}</a></li>
-                        <li className={`page-item ${n===pagination[2] ? "active":""}`}><a class="page-link" href={"/Inter/"+pagination[2]}>{pagination[2]}</a></li>
-                        <li className="page-item"><a class="page-link" href={"/Inter/"+pagination[3]}>{pagination[3]}</a></li>
+                        <li className={`page-item ${n===pagination[1] ? "active":""}`}><a className="page-link" href={"/Inter/"+pagination[1]}>{pagination[1]}</a></li>
+                        <li className={`page-item ${n===pagination[2] ? "active":""}`}><a className="page-link" href={"/Inter/"+pagination[2]}>{pagination[2]}</a></li>
+                        <li className="page-item"><a className="page-link" href={"/Inter/"+pagination[3]}>{pagination[3]}</a></li>
                         <li className="page-item">
                             <a className="page-link" href={"/Inter/"+pagination[4]}>{">"}</a>
                         </li>

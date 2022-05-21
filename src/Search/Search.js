@@ -56,14 +56,14 @@ const Search = () => {
 
 
     return (
-        <div className="container row" dir="rtl" style={{}}>
-            <div className='row col-lg-12' dir="rtl">
+        <div className="container row" dir="rtl" >
+            <div className='row col-lg-12' dir="rtl" style={{minHeight:"40vh"}}>
                 <div className="col-lg-12">
                     <h4 className="text-light"><Badge bg="primary">نتيجة البحث</Badge></h4>
                 </div>
                 {articles.length > 0 ?
                 <Articles/> :
-                <h5 className="text-danger">{"لا توجد نتائج متعلقة بـ "+s}</h5>
+                <h5 className="text-danger text-center">{"لا توجد نتائج متعلقة بـ "+s}</h5>
                 }
                 
             </div>

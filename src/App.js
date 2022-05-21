@@ -11,10 +11,14 @@ import Signup from "./Account/Signup"
 import Logout from "./Account/Logout"
 import Article from './Article/Article'
 import Search from './Search/Search';
+import Saved from './Account/Saved';
+import Liked from './Account/Liked';
 import International from './NewsCategories/International'
 import National from './NewsCategories/National'
-
+import Settings from './Account/Settings';
+import Deleted from "./Account/Deleted"
 import Sport from './NewsCategories/Sport'
+import Meteo from './NewsCategories/Meteo'
 
 
 import {
@@ -24,7 +28,7 @@ import {
 } from "react-router-dom";
 
 
-axios.defaults.baseURL = "http://127.0.0.1:8081"
+axios.defaults.baseURL = "http://192.168.1.158:8081"
 
 export default function App() {
 
@@ -47,7 +51,7 @@ export default function App() {
 
   return (
     <Router>
-      <div className='mainhetjdid row col-lg-12 justify-content-center align-self-start' dir="rtl" >
+      <div className='mainhetjdid row col-lg-12 justify-content-center align-self-start bg-light' dir="rtl" >
         <NavBar setUserID={setUserID} userID={userID} setDark={setDark} dark={dark}/>
         <PageHeader/>
         <Routes>
@@ -63,6 +67,13 @@ export default function App() {
           <Route path="/Nat" element={<National setUserID={setUserID} userID={userID}/>} />
           <Route path="/Sport/:n" element={<Sport setUserID={setUserID} userID={userID}/>} />
           <Route path="/Sport" element={<Sport setUserID={setUserID} userID={userID}/>} />
+          <Route path="/Saved" element={<Saved setUserID={setUserID} userID={userID}/>} />
+          <Route path="/Liked" element={<Liked setUserID={setUserID} userID={userID}/>} />
+          <Route path="/Settings" element={<Settings setUserID={setUserID} userID={userID}/>} />
+          <Route path="/Deleted" element={<Deleted setUserID={setUserID} userID={userID}/>} />
+          <Route path="/Meteo" element={<Meteo setUserID={setUserID} userID={userID}/>} />
+          <Route path="/Meteo" element={<Meteo setUserID={setUserID} userID={userID}/>} />
+
         </Routes>
         <Footer setUserID={setUserID} userID={userID}/>
       </div>
