@@ -27,8 +27,8 @@ import {
   Route
 } from "react-router-dom";
 
-
-axios.defaults.baseURL = "http://192.168.1.158:8081"
+//Mon serveur
+axios.defaults.baseURL = "http://localhost:8081"
 
 export default function App() {
 

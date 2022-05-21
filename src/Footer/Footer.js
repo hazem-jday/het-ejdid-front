@@ -12,15 +12,16 @@ const Footer = () => {
 
             <div className="container p-4">
                 <section className="mb-4">
-                    <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    {/* à changer après créer des comptes */}
+                    <a className="btn btn-outline-light btn-floating m-1" href="https://facebook.com/hazemjday" role="button">
                         <FaFacebook />
                     </a>
 
-                    <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <a className="btn btn-outline-light btn-floating m-1" href="https://play.google.com/store/apps/developer?id=Hazem+Jday" role="button">
                         <FaTwitter />
                     </a>
 
-                    <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <a className="btn btn-outline-light btn-floating m-1" href="https://www.youtube.com/channel/UCcvnCHySSsNwZ8KOUuF0ILQ?app=desktop" role="button">
                         <FaYoutube />
                     </a>
                 </section>
