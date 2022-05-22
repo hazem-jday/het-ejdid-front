@@ -44,8 +44,8 @@ const NewsHighlights = () => {
                             العالمية
                         </ListGroupItem>
                         {
-                        newsHighlights.nat ?
-                        newsHighlights.nat.map((article,i) =>
+                        newsHighlights.inter ?
+                        newsHighlights.inter.map((article,i) =>
                         <a href={"/Article/"+article.id} style={{textDecoration:"none"}} key={i}>
                             <ListGroupItem>
                                 
@@ -63,8 +63,8 @@ const NewsHighlights = () => {
                             الرياضة
                         </ListGroupItem>
                         {
-                        newsHighlights.nat ?
-                        newsHighlights.nat.map((article,i) =>
+                        newsHighlights.sport ?
+                        newsHighlights.sport.map((article,i) =>
                         <a href={"/Article/"+article.id} style={{textDecoration:"none"}} key={i}>
                             <ListGroupItem>
                                 
