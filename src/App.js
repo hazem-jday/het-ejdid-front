@@ -28,7 +28,7 @@ import {
 } from "react-router-dom";
 
 //Mon serveur
-axios.defaults.baseURL = "http://localhost:8081"
+axios.defaults.baseURL = "http://hazem.eastus.cloudapp.azure.com:81"
 
 export default function App() {
 
