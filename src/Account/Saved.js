@@ -45,7 +45,7 @@ const Saved = () => {
     return (
         <div className="container col-lg-12 justify-content-center align-self-start">
             <div>
-                <ListGroup className='row justify-content-between'>
+                <ListGroup className='justify-content-start' style={{minHeight:"40vh"}}>
                     <ListGroupItem active >
                         التسجيلات
                     </ListGroupItem>
@@ -53,14 +53,15 @@ const Saved = () => {
                         savedArticles.length ?
                         savedArticles.map((save, i) =>
                                 
-                                    <ListGroupItem className='justify-content-between d-flex' key={i}>
-                                        <div className='ms-auto me-2'>
+                                    <ListGroupItem className='col-lg-12 justify-content-between ' key={i}>
+                                        <div className='row'>
                                         <a href={"/Article/" + save.article} style={{ textDecoration: "none" }} key={i}>
                                         {save.title}
                                         </a>
                                         
                                         </div>
-                                        <div>
+
+                                        <div className="text-start">
                                         <Badge as={()=>deleteButton(save.id)}></Badge>
                                         </div>
                                     </ListGroupItem>

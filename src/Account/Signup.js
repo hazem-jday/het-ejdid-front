@@ -71,28 +71,28 @@ const Signup = (props) => {
                                             <form onSubmit={handleSignup}>
                                                 <div className="col-auto">
                                                     <label className="sr-only text-primary" htmlFor="nameSignUp">الإسم</label>
-                                                    <input name="firstName" type="text" className="form-control mb-2" id="nameSignUp" placeholder="حازم" pattern="[a-zأ-ي]{2,14}" />
+                                                    <input name="firstName" required type="text" className="form-control mb-2" id="nameSignUp" placeholder="حازم" pattern="[a-zأ-ي]{2,14}" />
                                                 </div>
                                                 <div className="col-auto">
                                                     <label className="sr-only text-primary" htmlFor="familyNameSignUp">اللقب</label>
-                                                    <input name="familyName" type="text" className="form-control mb-2" id="familyNameSignUp" placeholder="الجدي" pattern="[a-zأ-ي]{2,14}" />
+                                                    <input name="familyName" required type="text" className="form-control mb-2" id="familyNameSignUp" placeholder="الجدي" pattern="[a-zأ-ي]{2,14}" />
                                                 </div>
                                                 <div className="col-auto">
                                                     <label className="sr-only text-primary" htmlFor="userNameSignUp">إسم المستخدم</label>
                                                     <div className="input-group mb-2" >
 
-                                                        <input name="username" type="text" className="form-control" id="userNameSignUp" placeholder="إسم المستخدم" />
+                                                        <input name="username" required type="text" className="form-control" id="userNameSignUp" placeholder="إسم المستخدم" />
                                                     </div>
                                                     <h6 className="text-danger">{error}</h6>
 
                                                 </div>
                                                 <div className="col-auto">
                                                     <label className="sr-only text-primary" htmlFor="birthSignUp">تاريخ الولادة</label>
-                                                    <input name="birthDate" type="date" className="form-control mb-2" id="birthSignUp" placeholder="تاريخ الولادة" />
+                                                    <input name="birthDate" required type="date" className="form-control mb-2" id="birthSignUp" placeholder="تاريخ الولادة" />
                                                 </div>
                                                 <div className="col-auto">
                                                     <label className="sr-only text-primary" htmlFor="eMailSignUp">البريد الإلكتروني</label>
-                                                    <input name="email" type="email" className="form-control mb-2" id="eMailSignUp" placeholder="hazemjday@gmail.com" />
+                                                    <input name="email" required type="email" className="form-control mb-2" id="eMailSignUp" placeholder="hazemjday@gmail.com" />
                                                 </div>
                                                 <div className="col-auto">
                                                     <label className="sr-only text-primary" htmlFor="passwordSignUp">كلمة المرور</label>

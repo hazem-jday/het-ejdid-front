@@ -41,7 +41,8 @@ const Liked = () => {
     return (
         <div className="container col-lg-12 justify-content-center align-self-start">
             <div>
-                <ListGroup className='row justify-content-between'>
+                
+                <ListGroup className='justify-content-start' style={{minHeight:"40vh"}}>
                     <ListGroupItem active >
                         التسجيلات
                     </ListGroupItem>
@@ -49,14 +50,15 @@ const Liked = () => {
                         likedArticles.length ?
                         likedArticles.map((like, i) =>
                                 
-                                    <ListGroupItem className='justify-content-between d-flex' key={i}>
-                                        <div className='ms-auto me-2'>
+                                    <ListGroupItem className='col-lg-12 justify-content-between ' key={i}>
+                                        <div className='row'>
                                         <a href={"/Article/" + like.article} style={{ textDecoration: "none" }} key={i}>
                                         {like.title}
                                         </a>
                                         
                                         </div>
-                                        <div>
+
+                                        <div className="text-start">
                                         <Badge as={()=>deleteButton(like.id)}></Badge>
                                         </div>
                                     </ListGroupItem>
@@ -65,7 +67,7 @@ const Liked = () => {
                             :
                             <ListGroupItem className='justify-content-between d-flex'>
                                 <div className='ms-auto me-2' style={{minHeight:"40vh"}}>
-                                <Badge className='bg-danger' style={{fontSize:"150%"}} >لا توجد إعجابات</Badge>
+                                <Badge className='bg-danger' style={{fontSize:"150%"}} >لا توجد إعحابات</Badge>
                                 </div>
                             </ListGroupItem>
                     }
